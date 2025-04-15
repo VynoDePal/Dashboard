@@ -5,12 +5,15 @@ Un starter moderne pour applications React avec TypeScript, Vite et Tailwind CSS
 ## Fonctionnalités
 
 - ⚡ Vite pour un développement ultra-rapide
-- 🏗️ Configuration TypeScript prête à l'emploi
-- 🎨 Tailwind CSS pour le styling
+- 🏗️ Configuration TypeScript stricte et prête à l'emploi
+- 🎨 Tailwind CSS pour un styling utility-first
 - ✅ ESLint pour la qualité du code
 - 🛣️ React Router pour la navigation
 - 📊 Recharts pour les visualisations de données
 - 🧩 dnd-kit pour le drag-and-drop
+- 🔒 Context API et Guards pour la gestion de l'état global et la sécurité
+- 🧩 Hooks personnalisés pour la logique réutilisable
+- 🧪 Mock data pour faciliter le prototypage et les tests
 
 ## Technologies
 
@@ -32,30 +35,28 @@ Un starter moderne pour applications React avec TypeScript, Vite et Tailwind CSS
 ```
 .
 ├── src/
-│   ├── components/       # Composants organisés par fonctionnalité
-│   │   ├── analytics/    # Composants d'analytics
-│   │   ├── calendar/     # Composants de calendrier
-│   │   ├── chat/         # Composants de chat
-│   │   ├── layout/       # Composants de mise en page
-│   │   └── ui/           # Composants génériques
-│   ├── context/          # Contextes React
-│   │   └── ThemeContext.tsx
-│   ├── guards/           # Protection des routes
-│   │   └── AuthGuard.tsx
-│   ├── hooks/            # Hooks personnalisés
-│   │   ├── useFocusTrap.ts
-│   │   └── useToast.tsx
-│   ├── pages/            # Pages de l'application
-│   │   ├── Dashboard.tsx
-│   │   ├── Analytics.tsx
-│   │   └── ErrorPage.tsx
-│   ├── types/            # Types TypeScript
-│   │   ├── user.ts
-│   │   ├── task.ts
-│   │   └── project.ts
-│   └── utils/            # Utilitaires et mock data
-│       ├── GetWidgetConfig.tsx
-│       └── mock*.ts
+│   ├── components/       # Composants organisés par domaine métier ou fonctionnalité
+│   │   ├── analytics/    # Composants d'analytics (KPIStatCard, PerformanceTable...)
+│   │   ├── calendar/     # Composants de calendrier (CalendarGrid, EventForm...)
+│   │   ├── chat/         # Composants de chat (ChatWindow, ConversationsList...)
+│   │   ├── email/        # Composants d'email (EmailViewer, NewEmailModal...)
+│   │   ├── feed/         # Flux d'activité
+│   │   ├── layout/       # Structure globale (DashboardLayout, Sidebar...)
+│   │   ├── notes/        # Prise de notes
+│   │   ├── notifications/# Notifications (toasts, badges...)
+│   │   ├── payments/     # Paiements
+│   │   ├── projects/     # Gestion de projets
+│   │   ├── settings/     # Paramètres
+│   │   ├── tasks/        # Gestion des tâches
+│   │   ├── users/        # Gestion des utilisateurs
+│   │   ├── widgets/      # Mini-composants autonomes
+│   │   └── ui/           # Composants UI génériques réutilisables
+│   ├── context/          # Contextes React (ThemeContext...)
+│   ├── guards/           # Protection des routes (AuthGuard...)
+│   ├── hooks/            # Hooks personnalisés (useFocusTrap, useToast...)
+│   ├── pages/            # Pages principales de l'application (Dashboard, Analytics, Calendar, Chat, Email, ErrorPage, etc.)
+│   ├── types/            # Types TypeScript centralisés par domaine (user, task, project, etc.)
+│   └── utils/            # Fonctions utilitaires et mock data (GetWidgetConfig, mockAnalyticsData, etc.)
 ├── index.html            # Point d'entrée HTML
 ├── vite.config.ts        # Configuration Vite
 ├── tailwind.config.js    # Configuration Tailwind
@@ -63,41 +64,20 @@ Un starter moderne pour applications React avec TypeScript, Vite et Tailwind CSS
 └── package.json          # Dépendances et scripts
 ```
 
-## Architecture des composants
+## Architecture et bonnes pratiques
 
-L'application est organisée en composants spécialisés par fonctionnalité :
-
-### Fonctionnalités principales
-
-- **Analytics** : Tableaux de bord et visualisations
-  - KPIStatCard : Affichage des indicateurs clés
-  - PerformanceTable : Tableau de performances détaillé
-
-- **Calendar** : Gestion d'événements
-  - CalendarGrid : Grille interactive
-  - EventForm : Création/modification d'événements
-
-- **Chat** : Messagerie instantanée
-  - ChatWindow : Fenêtre de discussion
-  - ConversationsList : Liste des conversations
-
-- **Email** : Client email
-  - EmailViewer : Visualisation des emails
-  - NewEmailModal : Création de nouveaux emails
-
-### Composants génériques
-
-- **UI** : Composants réutilisables
-- **Layout** : Structure de l'application
-  - DashboardLayout : Structure principale
-  - Sidebar : Navigation latérale
-
-### Bonnes pratiques
-
-- Structure modulaire
-- Taille raisonnable des composants
-- Nommage clair et cohérent
-- Séparation des responsabilités
+- **Component-driven** : Composants spécialisés par domaine, UI génériques dans `ui/`, layouts partagés dans `layout/`.
+- **Context API & Guards** : Gestion de l'état global (ex : thème) et sécurisation des routes (AuthGuard).
+- **Hooks personnalisés** : Extraction de logique réutilisable (`useFocusTrap`, `useToast`, etc.).
+- **Types centralisés** : Tous les types et interfaces sont regroupés par domaine dans `types/` pour robustesse et maintenabilité.
+- **Utils & Mock data** : Fonctions utilitaires et données de test pour faciliter le développement et les tests sans backend.
+- **Pages** : Chaque page correspond à une vue métier principale, orchestrant composants, hooks et contextes.
+- **Séparation stricte des responsabilités** : Logique métier, UI, typage, utilitaires et navigation sont découplés.
+- **Conventions** :
+  - PascalCase pour les composants/pages/types
+  - kebab-case pour les dossiers/fichiers
+  - camelCase pour les fonctions, hooks, props
+- **Scalabilité** : L’architecture permet d’ajouter facilement de nouvelles features, pages ou domaines.
 
 ## Installation
 

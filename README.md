@@ -6,7 +6,14 @@ Un starter moderne pour applications React avec TypeScript, Vite et Tailwind CSS
 
 - ⚡ Vite pour un développement ultra-rapide
 - 🏗️ Configuration TypeScript stricte et prête à l'emploi
-- 🎨 Tailwind CSS pour un styling utility-first
+- 🎨 Gestion dynamique du thème :
+  - Contexte `ThemeContext` enrichi avec un objet `theme`, une fonction `updateTheme` et persistance dans `localStorage`
+  - Application des couleurs du thème (`primary`, `secondary`, `accent`) via variables CSS (`--color-primary`, etc.) sur le sélecteur `:root`
+  - Configuration de `tailwind.config.js` pour exposer ces variables en tant que couleurs utilitaires (`bg-primary`, `text-secondary`, `border-accent`)
+- 🌗 Mode clair/sombre en temps réel :
+  - Rafraîchissement instantané via `useEffect` sur `isDark` dans `ThemePreviewer`
+  - Harmonisation de l’épaisseur des bordures (`border-2`, `border-b-2`, `border-r-2`, `border-t-2`) sur Header, Sidebar, PageHeader, SidebarNavigation et ThemePreviewer
+  - Uniformisation des champs `input` de `ThemePreviewer` avec `border-2 border-gray-200 dark:border-gray-700 bg-background text-text`
 - ✅ ESLint pour la qualité du code
 - 🛣️ React Router pour la navigation
 - 📊 Recharts pour les visualisations de données

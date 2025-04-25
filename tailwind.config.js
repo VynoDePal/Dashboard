@@ -5,7 +5,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Add custom colors here if needed
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        accent: 'var(--color-accent)',
+        background: 'var(--color-background)',
+        text: 'var(--color-text)',
+        // Use bg-primary, bg-background, text-text, etc.
       },
     },
   },

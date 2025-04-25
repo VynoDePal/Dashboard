@@ -28,9 +28,10 @@ const EventForm: React.FC<EventFormProps> = ({
     e.preventDefault();
     if (!formData.title || !formData.date) return;
 
+    // On envoie formData (avec id éventuel), puis on écrase id
     onSubmit({
+      ...(formData as Event),
       id: initialData?.id || Math.random().toString(36).substr(2, 9),
-      ...formData as Event,
     });
     onClose();
   };
@@ -42,54 +43,54 @@ const EventForm: React.FC<EventFormProps> = ({
       <div className="flex min-h-screen items-center justify-center p-4">
         <div className="fixed inset-0 bg-black bg-opacity-25 transition-opacity"></div>
 
-        <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-md transform transition-all">
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <div className="relative bg-background text-text rounded-lg border-2 border-secondary shadow-xl w-full max-w-md transform transition-all">
+          <div className="flex items-center justify-between p-4 bg-background text-text border-b-2 border-secondary">
+            <h3 className="text-lg font-semibold text-secondary">
               {initialData ? 'Edit Event' : 'New Event'}
             </h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+              className="text-text/70 hover:text-text transition-colors duration-200"
             >
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6 text-text/70" />
             </button>
           </div>
 
           <form onSubmit={handleSubmit} className="p-4 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text">
                 Title
               </label>
               <input
                 type="text"
                 value={formData.title || ''}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-secondary dark:border-secondary bg-background text-text shadow-sm focus:border-primary focus:ring-primary"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text">
                 Date & Time
               </label>
               <input
                 type="datetime-local"
                 value={formData.date?.slice(0, 16) || ''}
                 onChange={(e) => setFormData({ ...formData, date: new Date(e.target.value).toISOString() })}
-                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-secondary dark:border-secondary bg-background text-text shadow-sm focus:border-primary focus:ring-primary"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text">
                 Type
               </label>
               <select
                 value={formData.type || 'meeting'}
                 onChange={(e) => setFormData({ ...formData, type: e.target.value as EventType })}
-                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-secondary dark:border-secondary bg-background text-text shadow-sm focus:border-primary focus:ring-primary"
               >
                 <option value="meeting">Meeting</option>
                 <option value="task">Task</option>
@@ -98,14 +99,14 @@ const EventForm: React.FC<EventFormProps> = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text">
                 Description
               </label>
               <textarea
                 value={formData.description || ''}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 rows={3}
-                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-secondary dark:border-secondary bg-background text-text shadow-sm focus:border-primary focus:ring-primary"
               />
             </div>
 
@@ -113,13 +114,13 @@ const EventForm: React.FC<EventFormProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600"
+                className="px-4 py-2 text-sm font-medium text-text bg-background border-2 border-secondary rounded-md hover:bg-secondary/10 dark:hover:bg-secondary/50"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {initialData ? 'Save Changes' : 'Create Event'}
               </button>

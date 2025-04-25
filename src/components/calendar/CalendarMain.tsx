@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import CalendarHeader from './CalendarHeader';
 import CalendarNavigation from './CalendarNavigation';
@@ -10,7 +10,6 @@ import { ViewType, Event } from '../../types/calendar';
 
 const CalendarMain: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [view, setView] = useState<ViewType>('month');
   const [events, setEvents] = useState<Event[]>([]);
@@ -57,11 +56,10 @@ const CalendarMain: React.FC = () => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+    <div className="h-full flex flex-col bg-background text-text rounded-lg border-2 border-secondary shadow-sm">
       <CalendarHeader 
         view={view} 
         onViewChange={handleViewChange}
-        currentDate={currentDate}
       />
       <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:border-gray-700">
         <CalendarNavigation 
@@ -73,7 +71,7 @@ const CalendarMain: React.FC = () => {
             setIsEventFormOpen(true);
             navigate('/calendar/new');
           }}
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-md shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary"
         >
           <Plus className="h-4 w-4 mr-2" />
           Add Event
@@ -93,7 +91,7 @@ const CalendarMain: React.FC = () => {
           navigate('/calendar');
         }}
         onSubmit={selectedEvent ? handleEventUpdate : handleEventAdd}
-        initialData={selectedEvent}
+        initialData={selectedEvent ?? undefined}
       />
 
       {selectedEvent && (

@@ -35,16 +35,16 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
     const days = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
 
     return (
-      <div className="grid grid-cols-7 gap-px bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden">
+      <div className="grid grid-cols-7 gap-px bg-secondary/20 text-text rounded-lg overflow-hidden">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
           <div
             key={day}
-            className="bg-gray-100 dark:bg-gray-800 p-2 text-center text-sm font-medium text-gray-600 dark:text-gray-300"
+            className="bg-background text-text p-2 text-center text-sm font-medium"
           >
             {day}
           </div>
         ))}
-        {days.map((day, dayIdx) => {
+        {days.map((day) => {
           const dayEvents = events.filter(event => 
             isSameDay(new Date(event.date), day)
           );
@@ -52,17 +52,14 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
           return (
             <div
               key={day.toISOString()}
-              className={`
-                min-h-[100px] p-2 bg-white dark:bg-gray-800 relative
-                ${!isSameMonth(day, currentDate) ? 'bg-gray-50 dark:bg-gray-900' : ''}
-                ${isToday(day) ? 'bg-blue-50 dark:bg-blue-900/20' : ''}
-              `}
+              className={`min-h-[100px] p-2 bg-background relative ${
+                !isSameMonth(day, currentDate) ? 'opacity-50' : ''
+              } ${isToday(day) ? 'bg-secondary/20' : ''}`}
             >
               <span
-                className={`
-                  inline-flex items-center justify-center w-8 h-8 rounded-full text-sm
-                  ${isToday(day) ? 'bg-blue-500 text-white' : 'text-gray-700 dark:text-gray-200'}
-                `}
+                className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium ${
+                  isToday(day) ? 'bg-secondary text-background' : 'text-text/70'
+                }`}
               >
                 {format(day, 'd')}
               </span>
@@ -71,13 +68,13 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
                   <button
                     key={event.id}
                     onClick={() => onEventClick(event)}
-                    className={`
-                      w-full text-left px-2 py-1 text-xs rounded-md truncate
-                      transition-colors duration-200 hover:opacity-80
-                      ${event.type === 'meeting' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
-                        event.type === 'task' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                        'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'}
-                    `}
+                    className={`w-full text-left px-2 py-1 text-xs rounded-md truncate transition-colors duration-200 ${
+                      event.type === 'meeting'
+                        ? 'bg-primary/20 text-primary'
+                        : event.type === 'task'
+                        ? 'bg-secondary/20 text-secondary'
+                        : 'bg-accent/20 text-accent'
+                    }`}
                   >
                     {event.title}
                   </button>
@@ -110,10 +107,9 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   {format(day, 'EEE')}
                 </div>
-                <div className={`
-                  inline-flex items-center justify-center w-8 h-8 rounded-full text-sm
-                  ${isToday(day) ? 'bg-blue-500 text-white' : 'text-gray-700 dark:text-gray-200'}
-                `}>
+                <div className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium ${
+                  isToday(day) ? 'bg-secondary text-background' : 'text-text/70'
+                }`}>
                   {format(day, 'd')}
                 </div>
               </div>
@@ -122,13 +118,13 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
                   <button
                     key={event.id}
                     onClick={() => onEventClick(event)}
-                    className={`
-                      w-full text-left px-2 py-1 text-xs rounded-md truncate
-                      transition-colors duration-200 hover:opacity-80
-                      ${event.type === 'meeting' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
-                        event.type === 'task' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                        'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'}
-                    `}
+                    className={`w-full text-left px-2 py-1 text-xs rounded-md truncate transition-colors duration-200 ${
+                      event.type === 'meeting'
+                        ? 'bg-primary/20 text-primary'
+                        : event.type === 'task'
+                        ? 'bg-secondary/20 text-secondary'
+                        : 'bg-accent/20 text-accent'
+                    }`}
                   >
                     {event.title}
                   </button>
@@ -164,13 +160,13 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
                   <button
                     key={event.id}
                     onClick={() => onEventClick(event)}
-                    className={`
-                      w-full text-left px-2 py-1 text-xs rounded-md truncate
-                      transition-colors duration-200 hover:opacity-80
-                      ${event.type === 'meeting' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
-                        event.type === 'task' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                        'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'}
-                    `}
+                    className={`w-full text-left px-2 py-1 text-xs rounded-md truncate transition-colors duration-200 ${
+                      event.type === 'meeting'
+                        ? 'bg-primary/20 text-primary'
+                        : event.type === 'task'
+                        ? 'bg-secondary/20 text-secondary'
+                        : 'bg-accent/20 text-accent'
+                    }`}
                   >
                     {event.title}
                   </button>

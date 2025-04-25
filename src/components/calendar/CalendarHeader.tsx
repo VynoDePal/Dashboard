@@ -5,14 +5,9 @@ import { Calendar, Clock, ListTodo } from 'lucide-react';
 interface CalendarHeaderProps {
   view: ViewType;
   onViewChange: (view: ViewType) => void;
-  currentDate: Date;
 }
 
-const CalendarHeader: React.FC<CalendarHeaderProps> = ({
-  view,
-  onViewChange,
-  currentDate,
-}) => {
+const CalendarHeader: React.FC<CalendarHeaderProps> = ({ view, onViewChange }) => {
   const viewOptions: { value: ViewType; label: string; icon: React.ElementType }[] = [
     { value: 'month', label: 'Month', icon: Calendar },
     { value: 'week', label: 'Week', icon: ListTodo },
@@ -20,8 +15,8 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   ];
 
   return (
-    <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+    <div className="flex items-center justify-between p-4 bg-background text-text rounded-lg border-b-2 border-secondary shadow-sm">
+      <h1 className="text-2xl font-semibold text-secondary">
         Calendar
       </h1>
       
@@ -30,14 +25,10 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
           <button
             key={value}
             onClick={() => onViewChange(value)}
-            className={`
-              inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium
-              transition-colors duration-200
-              ${view === value
-                ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200'
-                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }
-            `}
+            className={`inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-200 ${view === value
+                ? 'bg-secondary/20 text-secondary dark:bg-secondary dark:text-secondary'
+                : 'text-text/70 dark:text-text/70 hover:bg-secondary/10 dark:hover:bg-secondary/50'
+              }`}
             aria-label={`View as ${label}`}
           >
             <Icon className="w-4 h-4 mr-1.5" />

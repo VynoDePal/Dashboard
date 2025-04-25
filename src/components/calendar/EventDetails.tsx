@@ -21,9 +21,9 @@ const EventDetails: React.FC<EventDetailsProps> = ({
   if (!isOpen) return null;
 
   const typeColors = {
-    meeting: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-    task: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-    reminder: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+    meeting: 'bg-primary/20 text-primary',
+    task: 'bg-secondary/20 text-secondary',
+    reminder: 'bg-accent/20 text-accent',
   };
 
   return (
@@ -31,40 +31,37 @@ const EventDetails: React.FC<EventDetailsProps> = ({
       <div className="flex min-h-screen items-end justify-center sm:items-center p-4">
         <div className="fixed inset-0 bg-black bg-opacity-25 transition-opacity"></div>
 
-        <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-md transform transition-all">
+        <div className="relative bg-background text-text rounded-lg border-2 border-secondary shadow-xl w-full max-w-md transform transition-all">
           <div className="absolute top-0 right-0 pt-4 pr-4">
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
-            >
-              <X className="h-6 w-6" />
+            <button onClick={onClose} className="text-text/70 hover:text-text transition-colors duration-200">
+              <X className="h-6 w-6 text-text/70" />
             </button>
           </div>
 
           <div className="p-6">
             <div className="flex items-start space-x-3">
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-lg font-semibold text-secondary">
                   {event.title}
                 </h3>
                 <div className="mt-2 space-y-3">
-                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                    <CalendarIcon className="h-5 w-5 mr-2" />
+                  <div className="flex items-center text-sm text-text/70">
+                    <CalendarIcon className="h-5 w-5 mr-2 text-text/70" />
                     {format(new Date(event.date), 'MMMM d, yyyy')}
                   </div>
-                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                    <Clock className="h-5 w-5 mr-2" />
+                  <div className="flex items-center text-sm text-text/70">
+                    <Clock className="h-5 w-5 mr-2 text-text/70" />
                     {format(new Date(event.date), 'h:mm a')}
                   </div>
                   <div className="flex items-center">
-                    <Tag className="h-5 w-5 mr-2 text-gray-500 dark:text-gray-400" />
+                    <Tag className="h-5 w-5 mr-2 text-text/70" />
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${typeColors[event.type]}`}>
                       {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
                     </span>
                   </div>
                 </div>
                 {event.description && (
-                  <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
+                  <p className="mt-4 text-sm text-text/70">
                     {event.description}
                   </p>
                 )}
@@ -78,10 +75,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
               >
                 Delete
               </button>
-              <button
-                onClick={() => onEdit(event)}
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
+              <button onClick={() => onEdit(event)} className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary">
                 Edit
               </button>
             </div>

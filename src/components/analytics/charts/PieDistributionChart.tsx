@@ -16,10 +16,9 @@ interface PieDistributionChartProps {
   }>;
 }
 
-const COLORS = ['#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE', '#DBEAFE'];
-
 const PieDistributionChart: React.FC<PieDistributionChartProps> = ({ data }) => {
-  const { isDark } = useTheme();
+  const { theme } = useTheme();
+  const COLORS = [theme.colors.primary, theme.colors.secondary, theme.colors.accent];
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -30,20 +29,20 @@ const PieDistributionChart: React.FC<PieDistributionChartProps> = ({ data }) => 
           cy="50%"
           labelLine={false}
           outerRadius={80}
-          fill="#8884d8"
+          fill={theme.colors.primary}
           dataKey="value"
         >
-          {data.map((entry, index) => (
+          {data.map((_, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip
           contentStyle={{
-            backgroundColor: isDark ? '#1F2937' : '#FFFFFF',
-            border: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
+            backgroundColor: theme.colors.background,
+            border: `1px solid ${theme.colors.secondary}`,
             borderRadius: '0.375rem',
           }}
-          labelStyle={{ color: isDark ? '#F3F4F6' : '#111827' }}
+          labelStyle={{ color: theme.colors.text }}
         />
         <Legend />
       </PieChart>

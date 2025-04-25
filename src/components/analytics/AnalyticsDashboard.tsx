@@ -12,7 +12,7 @@ const AnalyticsDashboard: React.FC = () => {
   const [endDate, setEndDate] = useState<string>('');
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-text">
       <HeaderSection
         dateRange={dateRange}
         onDateRangeChange={setDateRange}

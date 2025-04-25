@@ -14,24 +14,24 @@ const UserActions: React.FC<UserActionsProps> = ({ user, onView, onEdit, onDelet
     <>
       <button
         onClick={() => onView(user)}
-        className="p-1 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+        className="p-1 text-secondary hover:text-primary transition-colors"
         aria-label="View details"
       >
-        <Eye className="h-4 w-4" />
+        <Eye className="h-4 w-4 text-secondary" />
       </button>
       <button
         onClick={() => onEdit(user)}
-        className="p-1 text-gray-500 hover:text-yellow-600 dark:text-gray-400 dark:hover:text-yellow-400"
+        className="p-1 text-secondary hover:text-primary transition-colors"
         aria-label="Edit user"
       >
-        <Edit className="h-4 w-4" />
+        <Edit className="h-4 w-4 text-secondary" />
       </button>
       <button
         onClick={() => onDelete(user)}
-        className="p-1 text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400"
+        className="p-1 text-secondary hover:text-primary transition-colors"
         aria-label="Delete user"
       >
-        <Trash2 className="h-4 w-4" />
+        <Trash2 className="h-4 w-4 text-secondary" />
       </button>
     </>
   );

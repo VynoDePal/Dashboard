@@ -20,17 +20,19 @@ const UserModal: React.FC<UserModalProps> = ({ user, isOpen, onClose }) => {
           onClick={onClose}
         ></div>
 
-        <div className="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-          <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div
+          className="inline-block align-bottom bg-background text-text rounded-lg border-2 border-secondary overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+        >
+          <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4 bg-background text-text">
             <div className="flex justify-between items-start">
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+              <h3 className="text-lg font-medium text-text">
                 User Details
               </h3>
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+                className="text-secondary hover:text-primary transition-colors"
               >
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 text-secondary" />
               </button>
             </div>
             <div className="mt-4 space-y-4">
@@ -102,7 +104,7 @@ const UserModal: React.FC<UserModalProps> = ({ user, isOpen, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm"
+              className="mt-3 w-full inline-flex justify-center rounded-md border-2 border-secondary bg-background text-text hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary sm:mt-0 sm:w-auto sm:text-sm"
             >
               Close
             </button>

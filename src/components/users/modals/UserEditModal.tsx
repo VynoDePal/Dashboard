@@ -42,7 +42,7 @@ const UserEditModal: React.FC<UserEditModalProps> = ({
           onClick={onClose}
         ></div>
 
-        <div className="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div className="inline-block align-bottom bg-background text-text rounded-lg border-2 border-secondary overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
           <form onSubmit={handleSubmit}>
             <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div className="flex justify-between items-start">
@@ -61,7 +61,7 @@ const UserEditModal: React.FC<UserEditModalProps> = ({
                 <div>
                   <label
                     htmlFor="firstName"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                    className="block text-sm font-medium text-text"
                   >
                     First Name
                   </label>
@@ -71,13 +71,13 @@ const UserEditModal: React.FC<UserEditModalProps> = ({
                     id="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="mt-1 block w-full rounded-md shadow-sm focus:ring-2 focus:ring-primary focus:border-primary bg-background text-text sm:text-sm"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="lastName"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                    className="block text-sm font-medium text-text"
                   >
                     Last Name
                   </label>
@@ -87,13 +87,13 @@ const UserEditModal: React.FC<UserEditModalProps> = ({
                     id="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="mt-1 block w-full rounded-md shadow-sm focus:ring-2 focus:ring-primary focus:border-primary bg-background text-text sm:text-sm"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                    className="block text-sm font-medium text-text"
                   >
                     Email
                   </label>
@@ -103,13 +103,13 @@ const UserEditModal: React.FC<UserEditModalProps> = ({
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="mt-1 block w-full rounded-md shadow-sm focus:ring-2 focus:ring-primary focus:border-primary bg-background text-text sm:text-sm"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                    className="block text-sm font-medium text-text"
                   >
                     Phone
                   </label>
@@ -119,7 +119,7 @@ const UserEditModal: React.FC<UserEditModalProps> = ({
                     id="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="mt-1 block w-full rounded-md shadow-sm focus:ring-2 focus:ring-primary focus:border-primary bg-background text-text sm:text-sm"
                   />
                 </div>
                 <div>
@@ -129,26 +129,26 @@ const UserEditModal: React.FC<UserEditModalProps> = ({
                       name="isActive"
                       checked={formData.isActive}
                       onChange={handleChange}
-                      className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                      className="rounded border-2 border-secondary text-primary shadow-sm focus:ring-primary focus:border-primary"
                     />
-                    <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                    <span className="ml-2 text-sm text-text">
                       Active
                     </span>
                   </label>
                 </div>
               </div>
             </div>
-            <div className="px-4 py-3 bg-gray-50 dark:bg-gray-700 sm:px-6 sm:flex sm:flex-row-reverse">
+            <div className="px-4 py-3 bg-background sm:px-6 sm:flex sm:flex-row-reverse">
               <button
                 type="submit"
-                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                className="w-full inline-flex justify-center rounded-md border-none shadow-sm px-4 py-2 bg-primary text-background hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm"
               >
                 Save Changes
               </button>
               <button
                 type="button"
                 onClick={onClose}
-                className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white dark:bg-gray-600 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm"
+                className="mt-3 w-full inline-flex justify-center rounded-md border-2 border-secondary shadow-sm px-4 py-2 bg-background text-text hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary sm:mt-0 sm:w-auto sm:text-sm"
               >
                 Cancel
               </button>

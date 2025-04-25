@@ -35,7 +35,7 @@ const UserList: React.FC<UserListProps> = ({
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="animate-pulse bg-gray-200 dark:bg-gray-700 h-20 rounded-lg"
+            className="animate-pulse bg-secondary/20 h-20 rounded-lg"
           />
         ))}
       </div>
@@ -74,24 +74,24 @@ const UserList: React.FC<UserListProps> = ({
 
       {viewMode === 'table' && (
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-800">
+          <table className="min-w-full divide-y divide-secondary">
+            <thead className="bg-secondary/20">
               <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider">
                   User
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider">
                   Status
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider">
                   Joined
                 </th>
-                <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-secondary uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="bg-background divide-y divide-secondary">
               {users.map((user) => (
                 <UserTableRow
                   key={user.id}

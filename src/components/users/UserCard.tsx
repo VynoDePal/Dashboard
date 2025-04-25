@@ -15,7 +15,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, onView, onEdit, onDelete }) =
   const initials = `${user.firstName[0]}${user.lastName[0]}`;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 transition-all duration-300 hover:shadow-md">
+    <div className="bg-background text-text rounded-lg border-secondary shadow-md p-4 transform transition-all ease-in-out duration-300 hover:shadow-md hover:scale-[1.03]">
       <div className="flex items-center space-x-4">
         {user.avatar ? (
           <img
@@ -24,21 +24,21 @@ const UserCard: React.FC<UserCardProps> = ({ user, onView, onEdit, onDelete }) =
             className="w-12 h-12 rounded-full"
           />
         ) : (
-          <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-secondary/20 dark:bg-secondary/50 flex items-center justify-center">
             {user.useIcon ? (
-              <UserIcon className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+              <UserIcon className="w-6 h-6 text-secondary" />
             ) : (
-              <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+              <span className="text-sm font-medium text-text">
                 {initials}
               </span>
             )}
           </div>
         )}
         <div className="flex-1">
-          <h3 className="text-sm font-medium text-gray-900 dark:text-white">
+          <h3 className="text-sm font-medium text-text">
             {user.firstName} {user.lastName}
           </h3>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-secondary">
             Joined {format(new Date(user.registrationDate), 'MM/dd/yyyy')}
           </p>
           <div className="mt-1 flex items-center">

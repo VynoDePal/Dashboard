@@ -15,7 +15,7 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, onView, onEdit, onDel
   const initials = `${user.firstName[0]}${user.lastName[0]}`;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 transition-all duration-300 hover:shadow-md">
+    <div className="bg-background text-text rounded-lg border-secondary shadow-md p-4 transform transition-all duration-300 ease-in-out hover:shadow-md hover:scale-[1.03]">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {user.avatar ? (
@@ -25,21 +25,21 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, onView, onEdit, onDel
               className="w-10 h-10 rounded-full"
             />
           ) : (
-            <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-secondary/20 dark:bg-secondary/50 flex items-center justify-center">
               {user.useIcon ? (
-                <UserIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                <UserIcon className="w-5 h-5 text-secondary" />
               ) : (
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                <span className="text-sm font-medium text-text">
                   {initials}
                 </span>
               )}
             </div>
           )}
           <div>
-            <h3 className="text-sm font-medium text-gray-900 dark:text-white">
+            <h3 className="text-sm font-medium text-text">
               {user.firstName} {user.lastName}
             </h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-secondary">
               Joined {format(new Date(user.registrationDate), 'MM/dd/yyyy')}
             </p>
           </div>

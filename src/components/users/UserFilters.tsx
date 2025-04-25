@@ -69,7 +69,7 @@ const UserFilters: React.FC<UserFiltersProps> = ({
             const [field, order] = e.target.value.split('-') as [SortField, SortOrder];
             onSortChange(field, order);
           }}
-          className="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="block w-full rounded-md border-2 border-secondary bg-background text-text py-2 pl-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
         >
           <option value="name-asc">Name (A-Z)</option>
           <option value="name-desc">Name (Z-A)</option>
@@ -84,9 +84,9 @@ const UserFilters: React.FC<UserFiltersProps> = ({
             type="checkbox"
             checked={showActiveOnly}
             onChange={(e) => onActiveFilterChange(e.target.checked)}
-            className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            className="rounded border-2 border-secondary text-primary shadow-sm focus:border-primary focus:ring-primary"
           />
-          <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+          <span className="ml-2 text-sm text-text">
             Active Only
           </span>
         </label>

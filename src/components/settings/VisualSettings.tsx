@@ -35,15 +35,15 @@ const VisualSettings: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Typography Settings */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
+              <h2 className="text-lg font-medium text-text flex items-center">
                 <Type className="h-5 w-5 mr-2" />
                 Typography
               </h2>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-sm text-secondary">
                 Customize fonts and text display settings
               </p>
             </div>
@@ -51,13 +51,13 @@ const VisualSettings: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text">
                 Font Family
               </label>
               <select
                 value={fontFamily}
                 onChange={(e) => setFontFamily(e.target.value)}
-                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-background text-text shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 style={{ fontFamily }}
               >
                 {fonts.map((font) => (
@@ -69,7 +69,7 @@ const VisualSettings: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text">
                 Base Font Size: {fontSize}px
               </label>
               <input
@@ -84,15 +84,15 @@ const VisualSettings: React.FC = () => {
           </div>
 
           <div className="mt-6 p-4 rounded-lg border dark:border-gray-700">
-            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Preview</h4>
+            <h4 className="text-sm font-medium text-text mb-4">Preview</h4>
             <div style={{ fontFamily, fontSize: `${fontSize}px` }} className="space-y-4">
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Heading 1</h1>
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Heading 2</h2>
-              <h3 className="text-xl font-medium text-gray-900 dark:text-white">Heading 3</h3>
-              <p className="text-base text-gray-600 dark:text-gray-300">
+              <h1 className="text-3xl font-bold text-text">Heading 1</h1>
+              <h2 className="text-2xl font-semibold text-text">Heading 2</h2>
+              <h3 className="text-xl font-medium text-text">Heading 3</h3>
+              <p className="text-base text-text">
                 Regular paragraph text. This is how most of your content will look.
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-secondary">
                 Smaller text for captions and secondary information.
               </p>
             </div>
@@ -101,11 +101,11 @@ const VisualSettings: React.FC = () => {
       </div>
 
       {/* UI Density Settings */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div>
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white">UI Density</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            <h2 className="text-lg font-medium text-text">UI Density</h2>
+            <p className="mt-1 text-sm text-secondary">
               Adjust the spacing and sizing of interface elements
             </p>
           </div>
@@ -122,8 +122,8 @@ const VisualSettings: React.FC = () => {
                 }`}
               >
                 <div className="flex flex-col items-center space-y-2">
-                  <Icon className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                  <Icon className="h-6 w-6 text-text" />
+                  <span className="text-sm font-medium text-text">
                     {label}
                   </span>
                 </div>
@@ -132,20 +132,20 @@ const VisualSettings: React.FC = () => {
           </div>
 
           <div className="mt-6 p-4 rounded-lg border dark:border-gray-700">
-            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Preview</h4>
+            <h4 className="text-sm font-medium text-text mb-4">Preview</h4>
             <div className={`space-y-${uiDensity === 'compact' ? '2' : uiDensity === 'comfortable' ? '6' : '4'}`}>
               <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                 <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900"></div>
                 <div>
-                  <h3 className="font-medium">List Item</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Description text</p>
+                  <h3 className="font-medium text-text">List Item</h3>
+                  <p className="text-sm text-secondary">Description text</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                 <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900"></div>
                 <div>
-                  <h3 className="font-medium">Another Item</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">More details here</p>
+                  <h3 className="font-medium text-text">Another Item</h3>
+                  <p className="text-sm text-secondary">More details here</p>
                 </div>
               </div>
             </div>
@@ -154,15 +154,15 @@ const VisualSettings: React.FC = () => {
       </div>
 
       {/* Animation & Motion Settings */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
+              <h2 className="text-lg font-medium text-text flex items-center">
                 <Zap className="h-5 w-5 mr-2" />
                 Animation & Motion
               </h2>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-sm text-secondary">
                 Configure animation and motion preferences
               </p>
             </div>
@@ -170,7 +170,7 @@ const VisualSettings: React.FC = () => {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-text mb-2">
                 Animation Speed
               </label>
               <div className="grid grid-cols-4 gap-3">
@@ -181,7 +181,7 @@ const VisualSettings: React.FC = () => {
                     className={`px-4 py-2 rounded-lg text-sm font-medium ${
                       animationSpeed === value
                         ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                        : 'bg-gray-100 dark:bg-gray-700 text-text hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                   >
                     {label}
@@ -192,10 +192,10 @@ const VisualSettings: React.FC = () => {
 
             <div className="flex items-center justify-between">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label className="block text-sm font-medium text-text">
                   Reduced Motion
                 </label>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-secondary">
                   Minimize non-essential animations
                 </p>
               </div>
@@ -212,7 +212,7 @@ const VisualSettings: React.FC = () => {
           </div>
 
           <div className="mt-6 p-4 rounded-lg border dark:border-gray-700">
-            <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Preview</h4>
+            <h4 className="text-sm font-medium text-text mb-4">Preview</h4>
             <div className="flex items-center space-x-4">
               <div
                 className={`w-12 h-12 bg-blue-500 rounded-lg transition-transform hover:scale-110 ${
@@ -247,15 +247,15 @@ const VisualSettings: React.FC = () => {
       </div>
 
       {/* Visual Accessibility */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
+              <h2 className="text-lg font-medium text-text flex items-center">
                 <Eye className="h-5 w-5 mr-2" />
                 Visual Accessibility
               </h2>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-sm text-secondary">
                 Adjust visual settings for better accessibility
               </p>
             </div>
@@ -263,7 +263,7 @@ const VisualSettings: React.FC = () => {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-text mb-2">
                 Contrast: {contrast}%
               </label>
               <input
@@ -277,13 +277,13 @@ const VisualSettings: React.FC = () => {
             </div>
 
             <div className="mt-6 p-4 rounded-lg border dark:border-gray-700">
-              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Preview</h4>
+              <h4 className="text-sm font-medium text-text mb-4">Preview</h4>
               <div style={{ filter: `contrast(${contrast}%)` }} className="space-y-4">
                 <div className="p-4 bg-blue-100 dark:bg-blue-900 rounded-lg">
                   <p className="text-blue-700 dark:text-blue-200">High contrast text example</p>
                 </div>
                 <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                  <p className="text-gray-700 dark:text-gray-200">Normal contrast text example</p>
+                  <p className="text-text">Normal contrast text example</p>
                 </div>
               </div>
             </div>

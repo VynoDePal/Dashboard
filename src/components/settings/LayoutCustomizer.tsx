@@ -3,7 +3,7 @@ import { Grid, Layout as LayoutIcon, Maximize2, Minimize2 } from 'lucide-react';
 import { LayoutTemplate } from '../../types/settings';
 
 const LayoutCustomizer: React.FC = () => {
-  const [layout, setLayout] = useState<string[][]>([
+  const [layout, setLayout] = useState<LayoutTemplate['layout']>([
     ['analytics', 'calendar', 'tasks', 'weather'],
     ['news', 'chat', 'email', 'projects'],
     ['notes', null, null, null]
@@ -87,7 +87,7 @@ const LayoutCustomizer: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div className="flex flex-wrap gap-4">
             <button
@@ -116,7 +116,7 @@ const LayoutCustomizer: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Layout Preview</h3>
+            <h3 className="text-lg font-medium text-text">Layout Preview</h3>
             <div className="grid grid-cols-4 gap-4">
               {layout.map((row, rowIndex) => (
                 row.map((widget, colIndex) => (
@@ -136,8 +136,8 @@ const LayoutCustomizer: React.FC = () => {
                         onDragStart={(e) => handleDragStart(e, widget)}
                         className="h-full p-4 flex flex-col items-center justify-center cursor-move"
                       >
-                        <Grid className="h-6 w-6 text-gray-400 dark:text-gray-500 mb-2" />
-                        <span className="text-sm text-gray-600 dark:text-gray-300">
+                        <Grid className="h-6 w-6 text-secondary mb-2" />
+                        <span className="text-sm text-text">
                           {getWidgetName(widget)}
                         </span>
                       </div>
@@ -149,7 +149,7 @@ const LayoutCustomizer: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white">Layout Settings</h3>
+            <h3 className="text-lg font-medium text-text">Layout Settings</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -184,8 +184,8 @@ const LayoutCustomizer: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
-        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Layout Tips</h3>
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
+        <h3 className="text-lg font-medium text-text mb-4">Layout Tips</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <h4 className="font-medium text-blue-700 dark:text-blue-300 mb-2">Drag & Drop</h4>

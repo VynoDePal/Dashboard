@@ -23,12 +23,12 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
 }) => {
   return (
     <div
-      className={`fixed inset-y-0 left-0 z-30 w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:z-auto ${
+      className={`fixed inset-y-0 left-0 z-30 w-64 bg-background text-text shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:z-auto ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
-      <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white">Settings</h1>
+      <div className="flex items-center justify-between p-4 border-b-2 border-secondary">
+        <h1 className="text-xl font-bold text-text">Settings</h1>
         <button
           onClick={onClose}
           className="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
@@ -38,7 +38,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         </button>
       </div>
 
-      <nav className="p-4 space-y-2">
+      <nav className="p-4 space-y-2 text-text">
         {sections.map((section) => {
           const Icon = section.icon;
           return (

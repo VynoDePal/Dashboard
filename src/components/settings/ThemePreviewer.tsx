@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Sun, Moon, Palette, Check, Laptop } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sun, Moon, Check } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { Theme } from '../../types/settings';
 import ApplyThemeButton from './ApplyThemeButton';
 
 const ThemePreviewer: React.FC = () => {
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark, toggleTheme, updateTheme } = useTheme();
   const [selectedPreset, setSelectedPreset] = useState('default');
   const [customColors, setCustomColors] = useState({
     primary: '#3b82f6',
@@ -75,8 +76,8 @@ const ThemePreviewer: React.FC = () => {
   };
 
   const PreviewCard = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <div className="border dark:border-gray-700 rounded-lg overflow-hidden">
-      <div className="border-b dark:border-gray-700 p-4">
+    <div className="border-2 border-secondary rounded-lg overflow-hidden">
+      <div className="border-b-2 border-secondary p-4">
         <h3 className="font-medium">{title}</h3>
       </div>
       <div className="p-4">{children}</div>
@@ -84,23 +85,38 @@ const ThemePreviewer: React.FC = () => {
   );
 
   // Create theme object for ApplyThemeButton
-  const newTheme = {
+  const newTheme: Theme = {
     id: selectedPreset,
     name: selectedPreset === 'custom' ? 'Custom' : colorPresets.find(p => p.id === selectedPreset)?.name || 'Custom',
     colors: {
       primary: customColors.primary,
       secondary: customColors.secondary,
       accent: customColors.accent,
+      background: customColors.background,
+      text: customColors.text,
     }
   };
 
+  // Live update global theme context and CSS variables when inputs change
+  useEffect(() => {
+    updateTheme(newTheme)
+    // Update background and text CSS variables
+    document.documentElement.style.setProperty('--color-background', customColors.background)
+    document.documentElement.style.setProperty('--color-text', customColors.text)
+  }, [customColors, selectedPreset])
+
+  // Lorsque le mode clair/sombre change, réappliquer le preset pour actualiser background et text
+  useEffect(() => {
+    handlePresetChange(selectedPreset)
+  }, [isDark, selectedPreset])
+
   return (
     <div className="space-y-8">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div>
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Theme Mode</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            <h2 className="text-lg font-medium text-text">Theme Mode</h2>
+            <p className="mt-1 text-sm text-secondary">
               Choose your preferred color scheme
             </p>
           </div>
@@ -146,7 +162,6 @@ const ThemePreviewer: React.FC = () => {
 
             <button className="relative p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-blue-300">
               <div className="flex items-center">
-                <Laptop className="h-5 w-5 text-gray-700" />
                 <span className="ml-2 font-medium text-gray-900">System</span>
               </div>
             </button>
@@ -154,11 +169,11 @@ const ThemePreviewer: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div>
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Color Scheme</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            <h2 className="text-lg font-medium text-text">Color Scheme</h2>
+            <p className="mt-1 text-sm text-secondary">
               Choose a preset or customize your colors
             </p>
           </div>
@@ -218,7 +233,7 @@ const ThemePreviewer: React.FC = () => {
                   type="text"
                   value={customColors.primary}
                   onChange={(e) => handleColorChange('primary', e.target.value)}
-                  className="flex-1 px-3 py-2 border rounded-lg dark:border-gray-700 dark:bg-gray-800"
+                  className="flex-1 px-3 py-2 border-2 rounded-lg border-gray-200 dark:border-gray-700 bg-background text-text"
                 />
               </div>
             </div>
@@ -238,7 +253,7 @@ const ThemePreviewer: React.FC = () => {
                   type="text"
                   value={customColors.secondary}
                   onChange={(e) => handleColorChange('secondary', e.target.value)}
-                  className="flex-1 px-3 py-2 border rounded-lg dark:border-gray-700 dark:bg-gray-800"
+                  className="flex-1 px-3 py-2 border-2 rounded-lg border-gray-200 dark:border-gray-700 bg-background text-text"
                 />
               </div>
             </div>
@@ -258,7 +273,7 @@ const ThemePreviewer: React.FC = () => {
                   type="text"
                   value={customColors.accent}
                   onChange={(e) => handleColorChange('accent', e.target.value)}
-                  className="flex-1 px-3 py-2 border rounded-lg dark:border-gray-700 dark:bg-gray-800"
+                  className="flex-1 px-3 py-2 border-2 rounded-lg border-gray-200 dark:border-gray-700 bg-background text-text"
                 />
               </div>
             </div>
@@ -266,11 +281,11 @@ const ThemePreviewer: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-6">
         <div className="space-y-6">
           <div>
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Preview</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            <h2 className="text-lg font-medium text-text">Preview</h2>
+            <p className="mt-1 text-sm text-secondary">
               See how your theme looks with different components
             </p>
           </div>
@@ -333,7 +348,7 @@ const ThemePreviewer: React.FC = () => {
             </PreviewCard>
           </div>
 
-          <div className="mt-8 pt-6 border-t dark:border-gray-700">
+          <div className="mt-8 pt-6 border-t-2 border-secondary">
             <ApplyThemeButton newTheme={newTheme} />
           </div>
         </div>

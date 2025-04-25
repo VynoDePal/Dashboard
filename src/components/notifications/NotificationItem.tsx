@@ -32,19 +32,19 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
 
   if (view === 'table') {
     return (
-      <tr className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+      <tr className="hover:bg-secondary/20 dark:hover:bg-secondary/40 transition-colors">
         <td className="px-6 py-4 whitespace-nowrap">
           <NotificationIcon type={notification.type} />
         </td>
         <td className="px-6 py-4">
-          <div className="text-sm text-gray-900 dark:text-gray-100">{notification.message}</div>
+          <div className="text-sm text-text">{notification.message}</div>
           {notification.metadata?.description && (
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <div className="text-xs text-secondary mt-1">
               {notification.metadata.description}
             </div>
           )}
         </td>
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-secondary">
           {formattedDate}
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
@@ -57,18 +57,18 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
             {!notification.isRead && (
               <button
                 onClick={() => onMarkAsRead(notification.id)}
-                className="text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 rounded-full p-1"
+                className="text-secondary hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1"
                 aria-label="Mark as read"
               >
-                <Check className="w-4 h-4" />
+                <Check className="w-4 h-4 text-secondary" />
               </button>
             )}
             <button
               onClick={() => onDelete(notification.id)}
-              className="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded-full p-1"
+              className="text-secondary hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1"
               aria-label="Delete notification"
             >
-              <Trash2 className="w-4 h-4" />
+              <Trash2 className="w-4 h-4 text-secondary" />
             </button>
           </div>
         </td>
@@ -78,11 +78,11 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
 
   return (
     <div className="relative pl-4 pb-12 group">
-      <div className="absolute left-0 top-2 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-700 group-last:h-2"></div>
+      <div className="absolute left-0 top-2 -ml-px h-full w-0.5 bg-secondary/20 dark:bg-secondary/50 group-last:h-2"></div>
       <div className="relative flex items-start group">
-        <span className="absolute left-0 -ml-2 h-4 w-4 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 group-hover:border-blue-500 dark:group-hover:border-blue-400"></span>
+        <span className="absolute left-0 -ml-2 h-4 w-4 rounded-full bg-background dark:bg-background border-2 border-secondary group-hover:border-primary dark:group-hover:border-primary"></span>
         <div className="min-w-0 flex-1 ml-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+          <div className="bg-background text-text rounded-lg border-2 border-secondary shadow-sm p-4 transform transition-all duration-300 ease-in-out hover:shadow-md hover:scale-[1.02]">
             <div className="flex justify-between items-start">
               <div className="flex items-center space-x-2">
                 <NotificationIcon type={notification.type} />
@@ -94,28 +94,28 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
                 {!notification.isRead && (
                   <button
                     onClick={() => onMarkAsRead(notification.id)}
-                    className="text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 rounded-full p-1"
+                    className="text-secondary hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1"
                     aria-label="Mark as read"
                   >
-                    <Check className="w-4 h-4" />
+                    <Check className="w-4 h-4 text-secondary" />
                   </button>
                 )}
                 <button
                   onClick={() => onDelete(notification.id)}
-                  className="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded-full p-1"
+                  className="text-secondary hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1"
                   aria-label="Delete notification"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-4 h-4 text-secondary" />
                 </button>
               </div>
             </div>
-            <p className="mt-2 text-sm text-gray-900 dark:text-gray-100">{notification.message}</p>
+            <p className="mt-2 text-sm text-text">{notification.message}</p>
             {notification.metadata?.description && (
-              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-xs text-secondary">
                 {notification.metadata.description}
               </p>
             )}
-            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">{formattedDate}</p>
+            <p className="mt-2 text-xs text-secondary">{formattedDate}</p>
           </div>
         </div>
       </div>

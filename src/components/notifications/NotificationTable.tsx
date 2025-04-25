@@ -65,20 +65,20 @@ const NotificationTable: React.FC<NotificationTableProps> = ({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
+    <div className="bg-background text-text shadow-sm rounded-lg border-2 border-secondary overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-700">
+        <table className="min-w-full divide-y divide-secondary">
+          <thead className="bg-secondary/20">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider">
                 Type
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider">
                 Message
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer"
+                className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider cursor-pointer"
                 onClick={() => handleSort('timestamp')}
               >
                 <div className="flex items-center">
@@ -86,9 +86,9 @@ const NotificationTable: React.FC<NotificationTableProps> = ({
                   {sortField === 'timestamp' && (
                     <span className="ml-2">
                       {sortDirection === 'asc' ? (
-                        <ChevronUp className="h-4 w-4" />
+                        <ChevronUp className="h-4 w-4 text-secondary" />
                       ) : (
-                        <ChevronDown className="h-4 w-4" />
+                        <ChevronDown className="h-4 w-4 text-secondary" />
                       )}
                     </span>
                   )}
@@ -96,7 +96,7 @@ const NotificationTable: React.FC<NotificationTableProps> = ({
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer"
+                className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider cursor-pointer"
                 onClick={() => handleSort('importance')}
               >
                 <div className="flex items-center">
@@ -104,20 +104,20 @@ const NotificationTable: React.FC<NotificationTableProps> = ({
                   {sortField === 'importance' && (
                     <span className="ml-2">
                       {sortDirection === 'asc' ? (
-                        <ChevronUp className="h-4 w-4" />
+                        <ChevronUp className="h-4 w-4 text-secondary" />
                       ) : (
-                        <ChevronDown className="h-4 w-4" />
+                        <ChevronDown className="h-4 w-4 text-secondary" />
                       )}
                     </span>
                   )}
                 </div>
               </th>
-              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-secondary uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+          <tbody className="bg-background divide-y divide-secondary">
             {paginatedNotifications.map((notification) => (
               <NotificationItem
                 key={notification.id}

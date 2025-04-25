@@ -31,16 +31,16 @@ const NotificationFilters: React.FC<NotificationFiltersProps> = ({ filters, onFi
   ];
 
   return (
-    <div className="space-y-4 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+    <div className="space-y-4 bg-background text-text rounded-lg border-2 border-secondary p-4 shadow-sm">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-text mb-1">
             Time Range
           </label>
           <select
             value={filters.timeRange}
             onChange={(e) => onFiltersChange({ ...filters, timeRange: e.target.value as TimeRange })}
-            className="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            className="block w-full rounded-md border-secondary shadow-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm"
           >
             {timeRanges.map((range) => (
               <option key={range.value} value={range.value}>
@@ -53,7 +53,7 @@ const NotificationFilters: React.FC<NotificationFiltersProps> = ({ filters, onFi
         {filters.timeRange === 'custom' && (
           <div className="md:col-span-2 grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-text mb-1">
                 Start Date
               </label>
               <div className="relative">
@@ -61,13 +61,13 @@ const NotificationFilters: React.FC<NotificationFiltersProps> = ({ filters, onFi
                   type="date"
                   value={filters.startDate}
                   onChange={(e) => onFiltersChange({ ...filters, startDate: e.target.value })}
-                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm pl-10"
+                  className="block w-full rounded-md border-secondary shadow-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm pl-10"
                 />
-                <Calendar className="absolute left-3 top-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                <Calendar className="absolute left-3 top-2 h-5 w-5 text-secondary" aria-hidden="true" />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-text mb-1">
                 End Date
               </label>
               <div className="relative">
@@ -75,22 +75,22 @@ const NotificationFilters: React.FC<NotificationFiltersProps> = ({ filters, onFi
                   type="date"
                   value={filters.endDate}
                   onChange={(e) => onFiltersChange({ ...filters, endDate: e.target.value })}
-                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm pl-10"
+                  className="block w-full rounded-md border-secondary shadow-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm pl-10"
                 />
-                <Calendar className="absolute left-3 top-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                <Calendar className="absolute left-3 top-2 h-5 w-5 text-secondary" aria-hidden="true" />
               </div>
             </div>
           </div>
         )}
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-text mb-1">
             Importance
           </label>
           <select
             value={filters.importance}
             onChange={(e) => onFiltersChange({ ...filters, importance: e.target.value as NotificationImportance | 'all' })}
-            className="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            className="block w-full rounded-md border-secondary shadow-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm"
           >
             {importanceLevels.map((level) => (
               <option key={level.value} value={level.value}>
@@ -101,13 +101,13 @@ const NotificationFilters: React.FC<NotificationFiltersProps> = ({ filters, onFi
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-text mb-1">
             Type
           </label>
           <select
             value={filters.type}
             onChange={(e) => onFiltersChange({ ...filters, type: e.target.value as NotificationType | 'all' })}
-            className="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            className="block w-full rounded-md border-secondary shadow-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm"
           >
             {types.map((type) => (
               <option key={type.value} value={type.value}>

@@ -66,33 +66,33 @@ const NotificationsPage: React.FC = () => {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-text">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+        <h1 className="text-2xl font-semibold text-text">
           Notifications
         </h1>
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setView('timeline')}
-            className={`p-2 rounded-lg transition-colors ${
+            className={`p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors ${
               view === 'timeline'
-                ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300'
-                : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ? 'bg-secondary/20 text-secondary'
+                : 'text-text hover:bg-secondary/20'
             }`}
             aria-label="Timeline view"
           >
-            <List className="w-5 h-5" />
+            <List className="w-5 h-5 text-secondary" />
           </button>
           <button
             onClick={() => setView('table')}
-            className={`p-2 rounded-lg transition-colors ${
+            className={`p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors ${
               view === 'table'
-                ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300'
-                : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ? 'bg-secondary/20 text-secondary'
+                : 'text-text hover:bg-secondary/20'
             }`}
             aria-label="Table view"
           >
-            <Layout className="w-5 h-5" />
+            <Layout className="w-5 h-5 text-secondary" />
           </button>
         </div>
       </div>

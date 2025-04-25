@@ -9,10 +9,10 @@ interface NotificationIconProps {
 
 const NotificationIcon: React.FC<NotificationIconProps> = ({ type, className = 'w-5 h-5' }) => {
   const icons = {
-    info: <Info className={`${className} text-blue-500`} aria-hidden="true" />,
-    success: <CheckCircle className={`${className} text-green-500`} aria-hidden="true" />,
-    error: <AlertCircle className={`${className} text-red-500`} aria-hidden="true" />,
-    warning: <AlertTriangle className={`${className} text-yellow-500`} aria-hidden="true" />,
+    info: <Info className={`${className} text-secondary`} aria-hidden="true" />,
+    success: <CheckCircle className={`${className} text-secondary`} aria-hidden="true" />,
+    error: <AlertCircle className={`${className} text-secondary`} aria-hidden="true" />,
+    warning: <AlertTriangle className={`${className} text-secondary`} aria-hidden="true" />,
   };
 
   return icons[type] || icons.info;

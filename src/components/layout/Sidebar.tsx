@@ -11,6 +11,11 @@ interface NavItemProps {
   isActive: boolean;
 }
 
+interface SidebarProps {
+  forceExpanded?: boolean
+  onNavigate?: () => void
+}
+
 const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, to, isCollapsed, isActive }) => (
   <Link
     to={to}
@@ -23,8 +28,9 @@ const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, to, isCollapsed, i
   </Link>
 );
 
-const Sidebar: React.FC = () => {
+const Sidebar: React.FC<SidebarProps> = ({ forceExpanded = false, onNavigate }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const collapsed = forceExpanded ? false : isCollapsed;
   const location = useLocation();
   const { widgets } = useWidgets();
 
@@ -51,24 +57,26 @@ const Sidebar: React.FC = () => {
   return (
     <div
       className={`${
-        isCollapsed ? 'w-16' : 'w-60'
+        collapsed ? 'w-16' : 'w-60'
       } h-screen bg-background text-text border-r-2 border-secondary transition-all duration-300 ease-in-out flex flex-col`}
     >
       <div className="flex items-center justify-between p-4 border-b-2 border-secondary">
-        {!isCollapsed && <span className="text-xl font-semibold dark:text-white">Dashboard</span>}
-        <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {isCollapsed ? (
-            <ChevronRight className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-          ) : (
-            <ChevronLeft className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-          )}
-        </button>
+        {!collapsed && <span className="text-xl font-semibold dark:text-white">Dashboard</span>}
+        {!forceExpanded && (
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {collapsed ? (
+              <ChevronRight className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+            ) : (
+              <ChevronLeft className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+            )}
+          </button>
+        )}
       </div>
-      <nav className="flex-1 overflow-y-auto p-4 text-text">
+      <nav onClick={() => onNavigate && onNavigate()} className="flex-1 overflow-y-auto p-4 text-text">
         <div className="flex flex-col gap-2">
           {navItems.map((item) => (
             <NavItem
@@ -76,7 +84,7 @@ const Sidebar: React.FC = () => {
               icon={item.icon}
               label={item.name}
               to={item.path}
-              isCollapsed={isCollapsed}
+              isCollapsed={collapsed}
               isActive={location.pathname === item.path}
             />
           ))}

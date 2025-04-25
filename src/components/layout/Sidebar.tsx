@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { navigationItems } from '../../routes';
+import { ChevronLeft, ChevronRight, Home, Users, Bell, Settings as SettingsIcon, BarChart3, MessageSquare, Mail, FolderKanban, StickyNote, CheckSquare, Calendar as CalendarIcon, Globe as GlobeIcon, CreditCard } from 'lucide-react';
+import { useWidgets } from '../../context/WidgetsContext';
 
 interface NavItemProps {
   icon: React.ElementType;
@@ -14,8 +14,8 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, to, isCollapsed, isActive }) => (
   <Link
     to={to}
-    className={`flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg cursor-pointer transition-colors ${
-      isActive ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/50 dark:text-blue-200' : ''
+    className={`flex items-center px-3 py-2 text-text hover:text-primary rounded-lg cursor-pointer transition-colors ${
+      isActive ? 'font-semibold text-primary' : ''
     }`}
   >
     <Icon className="w-5 h-5" />
@@ -26,14 +26,35 @@ const NavItem: React.FC<NavItemProps> = ({ icon: Icon, label, to, isCollapsed, i
 const Sidebar: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const location = useLocation();
+  const { widgets } = useWidgets();
+
+  const widgetNavMap: Record<string, { name: string; path: string; icon: React.ElementType }> = {
+    analytics: { name: 'Analytics', path: '/analytics', icon: BarChart3 },
+    chat: { name: 'Team Chat', path: '/chat', icon: MessageSquare },
+    email: { name: 'Email', path: '/emails', icon: Mail },
+    projects: { name: 'Projects', path: '/projects', icon: FolderKanban },
+    notes: { name: 'Notes', path: '/notes', icon: StickyNote },
+    tasks: { name: 'Tasks', path: '/tasks', icon: CheckSquare },
+    calendar: { name: 'Calendar', path: '/calendar', icon: CalendarIcon },
+    news: { name: 'News Feed', path: '/feed', icon: GlobeIcon },
+    payments: { name: 'Payments', path: '/payments', icon: CreditCard },
+  };
+
+  const navItems = [
+    { name: 'Dashboard', path: '/dashboard', icon: Home },
+    ...widgets.filter(w => w.enabled).map(w => widgetNavMap[w.id]).filter(item => item),
+    { name: 'Users', path: '/users', icon: Users },
+    { name: 'Notifications', path: '/notifications', icon: Bell },
+    { name: 'Settings', path: '/settings', icon: SettingsIcon },
+  ];
 
   return (
     <div
       className={`${
         isCollapsed ? 'w-16' : 'w-60'
-      } h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out flex flex-col`}
+      } h-screen bg-background text-text border-r-2 border-secondary transition-all duration-300 ease-in-out flex flex-col`}
     >
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between p-4 border-b-2 border-secondary">
         {!isCollapsed && <span className="text-xl font-semibold dark:text-white">Dashboard</span>}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
@@ -47,9 +68,9 @@ const Sidebar: React.FC = () => {
           )}
         </button>
       </div>
-      <nav className="flex-1 overflow-y-auto p-4">
+      <nav className="flex-1 overflow-y-auto p-4 text-text">
         <div className="flex flex-col gap-2">
-          {navigationItems.map((item) => (
+          {navItems.map((item) => (
             <NavItem
               key={item.path}
               icon={item.icon}

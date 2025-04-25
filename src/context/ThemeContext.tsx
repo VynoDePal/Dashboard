@@ -53,8 +53,19 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     document.documentElement.style.setProperty('--color-primary', theme.colors.primary)
     document.documentElement.style.setProperty('--color-secondary', theme.colors.secondary)
     document.documentElement.style.setProperty('--color-accent', theme.colors.accent)
-    document.documentElement.style.setProperty('--color-background', theme.colors.background)
-    document.documentElement.style.setProperty('--color-text', theme.colors.text)
+    // Background and text adapt to dark mode for default theme
+    document.documentElement.style.setProperty(
+      '--color-background',
+      theme.id === 'default'
+        ? (isDark ? '#1f2937' : defaultTheme.colors.background)
+        : theme.colors.background
+    )
+    document.documentElement.style.setProperty(
+      '--color-text',
+      theme.id === 'default'
+        ? (isDark ? '#f3f4f6' : defaultTheme.colors.text)
+        : theme.colors.text
+    )
 
     // Persist theme object
     localStorage.setItem('dashboard_theme', JSON.stringify(theme))

@@ -30,15 +30,11 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
         <button
           key={value}
           onClick={() => onFilterChange(value)}
-          className={`
-            inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium
-            ${
-              activeFilter === value
-                ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200'
-                : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-            }
-            transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900
-          `}
+          className={`px-4 py-2 rounded-full text-sm whitespace-nowrap border-2 ${
+            activeFilter === value
+              ? 'border-primary bg-primary/20 text-primary'
+              : 'border-secondary bg-background text-text hover:border-primary'
+          }`}
         >
           {label}
           <span className="ml-2 text-xs">({counts[value]})</span>

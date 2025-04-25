@@ -45,16 +45,13 @@ const TaskForm: React.FC<TaskFormProps> = ({
           onClick={onClose}
         ></div>
 
-        <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-xl w-full max-w-md transform transition-all">
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <div className="relative bg-background text-text rounded-lg border-2 border-secondary shadow-xl w-full max-w-md transform transition-all">
+          <div className="flex items-center justify-between p-4 bg-background text-text border-b-2 border-secondary">
+            <h3 className="text-lg font-semibold text-secondary">
               {initialData ? 'Edit Task' : 'Add New Task'}
             </h3>
-            <button
-              onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-            >
-              <X className="w-5 h-5" />
+            <button onClick={onClose} className="text-text/70 hover:text-text transition-colors duration-200">
+              <X className="w-5 h-5 text-text/70" />
             </button>
           </div>
 
@@ -62,7 +59,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
             <div>
               <label
                 htmlFor="title"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                className="block text-sm font-medium text-text"
               >
                 Task Title
               </label>
@@ -73,14 +70,14 @@ const TaskForm: React.FC<TaskFormProps> = ({
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, title: e.target.value }))
                 }
-                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-md border-secondary dark:border-secondary bg-background text-text shadow-sm focus:border-primary focus:ring-primary"
                 placeholder="Enter task title"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-text mb-2">
                 Priority
               </label>
               <div className="flex gap-4">
@@ -100,9 +97,9 @@ const TaskForm: React.FC<TaskFormProps> = ({
                           priority: e.target.value as TaskPriority,
                         }))
                       }
-                      className="form-radio text-blue-600 focus:ring-blue-500"
+                      className="form-radio text-primary focus:ring-primary"
                     />
-                    <span className="ml-2 text-sm text-gray-700 dark:text-gray-300 capitalize">
+                    <span className="ml-2 text-sm text-text capitalize">
                       {priority}
                     </span>
                   </label>
@@ -114,13 +111,13 @@ const TaskForm: React.FC<TaskFormProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="px-4 py-2 text-sm font-medium text-text bg-background border-2 border-secondary rounded-md hover:bg-secondary/10 dark:hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-secondary"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/90 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {initialData ? 'Save Changes' : 'Add Task'}
               </button>

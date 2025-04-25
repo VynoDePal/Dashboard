@@ -18,13 +18,13 @@ const TaskList: React.FC<TaskListProps> = ({
   if (tasks.length === 0) {
     return (
       <div className="p-8 text-center">
-        <p className="text-gray-500 dark:text-gray-400">No tasks found</p>
+        <p className="text-text/70">No tasks found</p>
       </div>
     );
   }
 
   return (
-    <div className="divide-y divide-gray-200 dark:divide-gray-700">
+    <div className="divide-y divide-secondary/20">
       {tasks.map((task) => (
         <TaskItem
           key={task.id}

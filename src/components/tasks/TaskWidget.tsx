@@ -3,7 +3,7 @@ import { Plus } from 'lucide-react';
 import TaskList from './TaskList';
 import TaskFilters from './TaskFilters';
 import TaskForm from './TaskForm';
-import { Task, TaskStatus, TaskPriority } from '../../types/task';
+import { Task, TaskStatus } from '../../types/task';
 
 interface TaskWidgetProps {
   className?: string;
@@ -38,11 +38,13 @@ const TaskWidget: React.FC<TaskWidgetProps> = ({ className }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
-  const handleAddTask = (task: Omit<Task, 'id' | 'createdAt'>) => {
+  const handleAddTask = (task: Partial<Task>) => {
     const newTask: Task = {
-      ...task,
       id: Math.random().toString(36).substr(2, 9),
       createdAt: new Date().toISOString(),
+      title: task.title!,
+      priority: task.priority!,
+      status: 'todo',
     };
     setTasks((prev) => [...prev, newTask]);
     setIsFormOpen(false);
@@ -80,18 +82,18 @@ const TaskWidget: React.FC<TaskWidgetProps> = ({ className }) => {
 
   return (
     <div
-      className={`bg-white dark:bg-gray-900 rounded-lg shadow-sm ${
+      className={`bg-background text-text rounded-lg border-2 border-secondary shadow-sm ${
         className || ''
       }`}
     >
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-4 bg-background text-text border-b-2 border-secondary">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <h2 className="text-lg font-semibold text-secondary">
             My Tasks
           </h2>
           <button
             onClick={() => setIsFormOpen(true)}
-            className="inline-flex items-center justify-center p-2 text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            className="inline-flex items-center justify-center p-2 text-text/70 hover:text-secondary hover:bg-secondary/10 dark:text-text/70 dark:hover:text-secondary dark:hover:bg-secondary/20 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-secondary"
             aria-label="Add new task"
           >
             <Plus className="w-5 h-5" />

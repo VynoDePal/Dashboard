@@ -23,11 +23,9 @@ const TaskItem: React.FC<TaskItemProps> = ({
 
   return (
     <div
-      className={`
-        group p-4 flex items-center gap-4 transition-all duration-300
-        hover:bg-gray-50 dark:hover:bg-gray-800
-        ${task.status === 'completed' ? 'bg-gray-50/50 dark:bg-gray-800/50' : ''}
-      `}
+      className={`group p-4 flex items-center gap-4 transition-all duration-300 hover:bg-background/10 dark:hover:bg-background/20 ${
+        task.status === 'completed' ? 'bg-background/20 dark:bg-background/20 line-through' : ''
+      }`}
     >
       <button
         onClick={() => onToggleStatus(task.id)}
@@ -76,14 +74,14 @@ const TaskItem: React.FC<TaskItemProps> = ({
       <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
         <button
           onClick={() => onEdit(task)}
-          className="p-1 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+          className="p-1 text-text/70 hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary rounded-full"
           aria-label="Edit task"
         >
           <Pencil className="w-4 h-4" />
         </button>
         <button
           onClick={() => onDelete(task.id)}
-          className="p-1 text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+          className="p-1 text-text/70 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-full"
           aria-label="Delete task"
         >
           <Trash2 className="w-4 h-4" />
